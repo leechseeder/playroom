@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
-    <script type="text/javascript" src="rps.js"></script>
+    <script type="text/javascript" src="rps.js" defer></script>
 </head>
 <body>
 
-    <h1>Open the console to play, the game can be commenced by calling play(). Choices are not case sensitive but broader input error checking has not been implemented.</h1>
+    <h1>Let's play Rock-Paper-Scissors, best of 5</h1>
+    <h2>Your choice: </h2>
+    <div id="choices">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <div id="round-result"></div>
+    <div id="score"></div>
     
 </body>
 </html>

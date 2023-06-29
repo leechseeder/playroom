@@ -1,3 +1,9 @@
+let playerScore = 0;
+let computerScore = 0;
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+
 let choices = {
     "rock": 0,
     "paper": 1,
@@ -11,47 +17,37 @@ function getComputerChoice() {
 function playRound(playerChoice, computerChoice) {
     let result = ((playerChoice + 3 - computerChoice) % 3);
     if (result == 0) {
-        return 0; //draw
+        document.getElementById("round-result").innerHTML = "It's a draw! choose again.";
     } else if (result == 1) {
-        return 1; //win
+        ++playerScore;
+        document.getElementById("round-result").innerHTML = "You won this round.";
     } else {
-        return 2; //loss
+        ++computerScore;
+        document.getElementById("round-result").innerHTML = "You lost this round.";
     } 
+    endRound();
 }
 
-function rpsParse(choice){
-    return choices[choice.toLowerCase(choice)];
-}
-
-function play() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let currentResult = 0;
-    let playerChoice;
-
-
-
-    while (playerScore < 3 && computerScore < 3) {
-        playerChoice = rpsParse(prompt("Please make a selection:"));
-        currentResult = playRound(playerChoice, getComputerChoice());
-        switch (currentResult) {
-            case 0:
-                console.log("Drawn Round, pleas continue.");
-                break;
-            case 1:
-                console.log("You won this round.");
-                ++playerScore;
-                break;
-            case 2:
-                console.log("Computer won this round.")
-                ++computerScore
-                break;
-        }
+function endRound() {
+    if (playerScore > 2 || computerScore > 2){
+        document.getElementById("score").innerHTML = "The final score is You: " + playerScore + " Computer: " + computerScore;
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+    } else {
+        document.getElementById("score").innerHTML = "The score is now You: " + playerScore + " Computer: " + computerScore;
 
     }
-
-    console.log("The final score was You: " + playerScore + " Computer: " + computerScore)
-
-    
-
 }
+
+
+rock.addEventListener("click", () => {
+    playRound(0, getComputerChoice());
+})
+paper.addEventListener("click", () => {
+    playRound(1, getComputerChoice());
+})
+scissors.addEventListener("click", () => {
+    playRound(2, getComputerChoice());
+})
+
