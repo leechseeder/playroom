@@ -1,0 +1,18 @@
+body {
+    font-family: sans-serif;
+    background-color: rgb(226, 60, 60);
+}
+
+#slate {
+    position: center;
+    background-color: rgb(226, 60, 60);
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+}
+
+#pixel {
+    background-color: white;
+    height: 240px;
+    width: 240px;
+}
