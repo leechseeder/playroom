@@ -11,6 +11,8 @@ button {
     border-radius: 5px;
     border-style: solid;
     border-color: black;
+    font-size: large;
+    font-weight: bolder;
 }
 
 #container {
@@ -32,6 +34,8 @@ button {
 
 #screen {
     display:flex;
+    flex-direction: column;
+    align-items: center;
     margin: 10px;
     width: 280px;
     height: 80px;
@@ -42,7 +46,7 @@ button {
     border-color: black;
 }
 
-#buttons {
+.buttons {
     margin-left: 0px;
     
 }
@@ -53,3 +57,11 @@ button {
     padding: 6px;
 }
 
+#hold {
+    align-items: center;
+}
+
+#result {
+    align-items: center;
+    font-size: x-large;
+}

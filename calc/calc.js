@@ -4,11 +4,7 @@ let newval = "";
 let result = "";
 const buttons = document.querySelectorAll("button");
 const result_text = document.getElementById("result");
-
-
-
-
-
+const hold_text = document.getElementById("hold");
 
 
 buttons.forEach((button) => 
@@ -20,16 +16,25 @@ function input(x){
         if (x == "="){
             result = operate(currentval, operand, newval);
             result_text.innerHTML = result;
+            hold_text.innerHTML = "";
+            clearMemory();
+        } else if (x === "Clear") {
             clearMemory();
         } else {
-            operand = x;
-            currentval = newval;
-            newval = "";
+            if (operand == ""){
+                operand = x;
+                currentval = newval;
+                newval = "";
+            } else {
+                currentval = operate(currentval, operand, newval);
+                hold_text.innerHTML = currentval;
+                operand = x; 
+                newval = "";               
+            }
         }
-        operand = x;
     } else {
         newval = "" + newval + x;
-        result_text.innerHTML = newval;
+        hold_text.innerHTML = newval;
     }
 }
 
@@ -51,12 +56,12 @@ function subtract (x, y) {
 }
 
 function multiply (x, y) {
-    return x * y;
+    return Number(x) * Number(y);
 
 }
 
-function divide (x,y) {
-    return x / y;
+function divide (x, y) {
+    return Number(x) / Number(y);
 }
 
 function operate(x, op, y){
